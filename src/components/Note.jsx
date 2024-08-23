@@ -18,24 +18,12 @@ const Note = () => {
   const editModal = useRef();
 
   const generateColor = () => {
-    // let x = Math.floor(Math.random() * 256);
-    // let y = Math.floor(Math.random() * 256);
-    // let z = Math.floor(Math.random() * 256);
-
-    // let c = "rgb(" + x + "," + y + "," + z + ")";
-    // let rColor = `bg-[${c}]`;
-    // return rColor;
-
     const randomColor = Math.floor(Math.random() * 16777215)
       .toString(16)
       .padStart(6, "0");
-    // console.log(randomColor);
+
     return `bg-[#${randomColor}]`;
   };
-  // let p;
-  // let etitle = "";
-  // let eCategory = "";
-  // let eDesc = "";
 
   const handleEditModal = (title, category, desc, id) => {
     console.log(title);
