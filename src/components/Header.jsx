@@ -53,6 +53,7 @@ const Header = () => {
           <div>
             <button
               onClick={handleAddNote}
+              // onClick={() => addNote()}
               className="bg-black text-white p-2 rounded-md"
             >
               Add Note
