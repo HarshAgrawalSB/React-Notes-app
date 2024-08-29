@@ -16,7 +16,7 @@ jobs:
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC2kMJZ1ouZarKWBJJa3zdFTnpmVWCuiannFnMIskg1trR07K6UMas1A74mqobKbwWKWmV0J1HNApjDv6OQMlOvkwpHtES4aAmSKNEfa6t/FqGdxqtEApofqvQ1oPPUx1s+C7PPk/Q5Eef1RzzKGXc7YfV4r833wsq1KWaquOXeS2QS6RL4s9vuTMIxfTBiFRRlNqEKVRHr4aNmAWFdZpODtfW4F+8PZOYjyNnwt27mjlParQoIeCzrgYUcY/MvfIW80n1u0I7W+F9ZWETMfJseNiuPSnhh5FvP8ZNLlj+rdz8taNzLv5HixVVNB1tXkzJrAi5Vj/PsMq/GcTn1cKU75s7AUI5azH/0wjDdnjUZZXnoBVXrJ6lomQ6QlPtfJ5O0ztMFZLOXqyRNvsLxfbRW1R5XNjklAU8IjJPLWYQvcaq90dNLNblQDxrGd9iOvgtYlVHKRm1aSt2DSPb58kKS1/iosKHmOIE4PcXuI5kg/G17uSiJ9faD3Fh9hXAH1CkEMzLg37TjNzw+aMx4YgHA7aQ1Y/SKyS5slxcXW2u8SSIItJoMV/kXtVGAkvkZ3avT6dyeAD9FkieAC6ipx6oc3wfF7aLSdXI/2C1Tz5gakiJXN8QjYSlZZnmWz+Zk7oTcaAqdDv7bBAVv0VcbrR2TadqMqnh8h+nWT5gNWRtMrQ== harshagrawal@startbitsolutions.com
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy to Ubuntu VM
         run: |
