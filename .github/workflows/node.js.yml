@@ -20,4 +20,4 @@ jobs:
 
       - name: Deploy to Ubuntu VM
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@192.168.56.108 cd /home/Desktop/React-Notes-app && git pull origin master && /home/Desktop/deploy.sh
+          ssh -o StrictHostKeyChecking=no -p 24 ubuntu@192.168.56.108 "cd /home/Desktop/React-Notes-app && git pull origin master && /home/Desktop/deploy.sh"
