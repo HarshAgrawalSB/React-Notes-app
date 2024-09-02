@@ -30,6 +30,9 @@ jobs:
               cd React-Notes-app
             fi
 
+            # Kill existing npm processes (if any)
+            pkill -f 'npm run dev' || true
+
             # Install dependencies
             npm install
 
