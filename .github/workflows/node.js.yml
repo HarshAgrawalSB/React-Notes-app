@@ -34,8 +34,8 @@ jobs:
             npm install
 
             # Start the Vite development server
-            npm run dev &
+            npm run dev -- --host &
 
             # Start ngrok to expose the app
-            ngrok http 5173 > /var/log/ngrok.log 2>&1 &
+            ngrok http 5173 &
           EOF
