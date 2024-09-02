@@ -1,9 +1,9 @@
-name: Deploy to Ubuntu VM
+name: Deploy Vite React App
 
 on:
   push:
     branches:
-      - master
+      - main # Adjust if your default branch is named differently
 
 jobs:
   deploy:
@@ -13,11 +13,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up SSH key
+      - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to Ubuntu VM
+      - name: Deploy to remote server
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@192.168.56.108 "cd /home/Desktop/React-Notes-app && /home/Desktop/deploy.sh"
+          ssh -o StrictHostKeyChecking=no bitnami@ip-172-26-2-255 << 'EOF'
+            # Clone the repository
+            if [ -d "React-Notes-app" ]; then
+              cd your-repo
+              git pull origin main
+            else
+              git clone https://github.com/HarshAgrawalSB/React-Notes-app.git
+              cd React-Notes-app
+            fi
+
+            # Install dependencies
+            npm install
+
+            # Start the Vite development server
+            npm run dev &
+
+            # Start ngrok to expose the app
+            ngrok http 5173 > /var/log/ngrok.log 2>&1 &
+          EOF
