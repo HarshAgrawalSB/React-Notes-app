@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to remote server
         run: |
-          ssh -o StrictHostKeyChecking=no bitnami@ip-172-26-2-255 << 'EOF'
+          ssh -o StrictHostKeyChecking=no bitnami@13.127.116.15 << 'EOF'
             # Clone the repository
             if [ -d "React-Notes-app" ]; then
               cd your-repo
