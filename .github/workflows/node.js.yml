@@ -3,7 +3,7 @@ name: Deploy Vite React App
 on:
   push:
     branches:
-      - master # Adjust if your default branch is named differently
+      - master
 
 jobs:
   deploy:
@@ -21,10 +21,10 @@ jobs:
       - name: Deploy to remote server
         run: |
           ssh -o StrictHostKeyChecking=no bitnami@13.127.116.15 << 'EOF'
-            # Clone the repository
+            # Clone the repository if it doesn't already exist
             if [ -d "React-Notes-app" ]; then
               cd React-Notes-app
-              git pull origin main
+              git pull origin master
             else
               git clone https://github.com/HarshAgrawalSB/React-Notes-app.git
               cd React-Notes-app
@@ -33,12 +33,15 @@ jobs:
             # Kill existing npm processes (if any)
             pkill -f 'npm run dev' || true
 
+            # Kill processes on specific ports to avoid conflicts
+            lsof -t -i:5173 | xargs kill -9 || true
+            lsof -t -i:5174 | xargs kill -9 || true
+            lsof -t -i:5175 | xargs kill -9 || true
+
             # Install dependencies
             npm install
 
-            # Start the Vite development server
+            # Start the Vite development server in the background
             npm run dev -- --host &
 
-            # Start ngrok to expose the app
-            # ngrok http 5173 &
           EOF
