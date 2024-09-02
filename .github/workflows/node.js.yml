@@ -40,5 +40,5 @@ jobs:
             npm run dev -- --host &
 
             # Start ngrok to expose the app
-            ngrok http 5173 &
+            # ngrok http 5173 &
           EOF
