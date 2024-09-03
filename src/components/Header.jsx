@@ -25,7 +25,7 @@ const Header = () => {
             <img src={ProfileImg} alt="User Profile Image" />
           </div>
 
-          <h1 className="text-2xl font-bold ">Notes Application</h1>
+          <h1 className="text-2xl font-bold ">Notes Application V2</h1>
 
           {notes.length > 0 ? (
             <div>
