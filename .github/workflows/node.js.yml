@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to remote server
         run: |
-          ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 bitnami@13.127.116.15 << 'EOF'
+          ssh -o StrictHostKeyChecking=no bitnami@13.127.116.15 << 'EOF'
             # Clone the repository if it doesn't already exist
             if [ -d "React-Notes-app" ]; then
               cd React-Notes-app
@@ -42,6 +42,5 @@ jobs:
             npm install
 
             # Start the Vite development server in the background
-            nohup npm run dev -- --host
-
+            nohup npm run dev -- --host &
           EOF
