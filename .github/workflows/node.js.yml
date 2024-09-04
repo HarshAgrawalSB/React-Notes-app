@@ -37,6 +37,14 @@ jobs:
             npm install
             npm run build
 
+            # Kill existing npm processes (if any)
+            pkill -f 'npm run dev' || true
+
+            # Kill processes on specific ports to avoid conflicts
+            lsof -t -i:5173 | xargs kill -9 || true
+            lsof -t -i:5174 | xargs kill -9 || true
+            lsof -t -i:5175 | xargs kill -9 || true
+
             # Start serving the built files with a static file server
             pm2 start node_modules/.bin/serve --name "react-notes" -- dist
 
