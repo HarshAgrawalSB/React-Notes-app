@@ -44,5 +44,7 @@ jobs:
             # Start the Vite development server in the background
             nohup npm run dev -- --host &
 
+            sleep 10
+            
             exit
           EOF
